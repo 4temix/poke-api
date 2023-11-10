@@ -15,7 +15,7 @@ async function pokeAPI(url){
         let json = await peticion.json()
         let next;
         let prev;
-        
+        console.log(json)
         
         if(!peticion.ok) throw {status: peticion.status, statusText: peticion.statusText}
          
@@ -36,9 +36,12 @@ async function pokeAPI(url){
                         <div class="pokemon-div">           
                             <img src="${ress.sprites.front_default}" alt="${ress.name}">
                             <p>${ress.name}</p>
+                            <p class="type">${ress.types[0].type.name}</p>
                         </div>`
                     $fragmento.appendChild($article)
+                    console.log(ress.types[0].type)
                 })
+                
 
                 // let $article = document.createElement("article")
                 // $article.classList.add("pokemon")
