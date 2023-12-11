@@ -3,6 +3,7 @@ const $fragmento = document.createDocumentFragment();
 const $loader = document.querySelector(".ld");
 const $buttons = document.querySelector(".buttons");
 const $main = document.querySelector(".main");
+let prueba;
 
 let pokemons = "https://pokeapi.co/api/v2/pokemon/";
 
@@ -35,6 +36,10 @@ async function pokeAPI(url) {
                             <p class="type">${ress.types[0].type.name}</p>
                         </div>`;
             $container.appendChild($article);
+            prueba = document.querySelectorAll(".pokemon");
+            if (prueba.length == 19) {
+              $loader.style.visibility = "hidden";
+            }
           });
       } catch (error) {
         let err = error || "ups ocurrio un error";
@@ -42,8 +47,6 @@ async function pokeAPI(url) {
       }
     }
     console.timeEnd("");
-
-    $loader.style.visibility = "hidden";
 
     next = json.next ? `<a href="${json.next}" class="pag">siguiente</a>` : "";
     prev = json.previous
